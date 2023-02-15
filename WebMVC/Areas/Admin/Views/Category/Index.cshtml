@@ -1,0 +1,33 @@
+﻿@model CategoryListVM
+
+<h3>Category List</h3>
+
+<a asp-action="Create">Create Category</a>
+
+<h4>Category Count: @Model.Total</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Photo</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Category item in Model.Categories)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>
+                    <img src="/image/@item.PhotoUrl" width="100" alt="icon"/>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
